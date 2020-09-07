@@ -1,0 +1,178 @@
+/* ICON ------------------------------------------------------------------------------- */
+/* Tooltip container */
+.icon-tooltip {
+    color: white !important;
+    filter: grayscale(100%);
+    transition: 0.5s;
+}
+
+/* Tooltip text */
+.icon-tooltip .icon-tooltiptext {
+	visibility: hidden;
+	height: 2.5rem;
+	width: 8vw;
+	margin-left: -2vw;
+	margin-top: 10px;
+	background-color: #fc4d3c;
+	color: white;
+	padding: 3px;
+	padding-top:0;
+	border-radius: 2px;
+	float:left;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 0.5s;
+	font-size: .7rem;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.icon-tooltip:hover .icon-tooltiptext {
+	visibility: visible;
+	opacity: 1;
+	text-transform: uppercase;
+}
+
+.icon-tooltip:hover {
+	filter: unset;
+	cursor: pointer;
+}
+
+/* OFFER------------------------------------------------------------------------------- */
+.offers-tooltip {
+    color: black !important;
+    transition: 0.5s;
+    text-align: center;
+}
+
+/* Tooltip text */
+.offers-tooltip .offers-tooltiptext {
+	visibility: hidden;
+/* 	background-color: rgb(255, 253, 238); */
+	color: rgb(255, 253, 238);
+	padding: 3px;
+	padding-top:0;
+	border-radius: 2px;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 0.5s;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.offers-tooltip:hover .offers-tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
+
+.offers-tooltip:hover {
+	filter: unset;
+	cursor: pointer;
+}
+
+@media (max-width: 992px){
+
+}
+
+
+/* RECT------------------------------------------------------------------------------- */
+
+/* Tooltip container */
+.rect-tooltip {
+  color:white !important;
+  filter: grayscale(100%);
+  transition:0.3s;
+  margin-bottom: 1.5rem;
+}
+
+/* Tooltip text */
+    .rect-tooltip .tooltiptext {
+        height: 16vh;
+        /*background-color: #fc4d3c;*/
+        border-style: solid;
+        border-width: 0px 0px 0px 5px;
+        border-color: #fc4d3c;
+        border-color: black;
+        border-radius: 1px;
+        color: white;
+        padding: 3px;
+        margin-left: 0;
+        margin-bottom: 2rem;
+        position: absolute;
+        z-index: 1;
+        transition: 0.5s;
+    }
+
+    .rect-tooltip:hover {
+        filter: grayscale(0%);
+        cursor: pointer;
+    }
+    .tooltipinfo{
+    	opacity: 0;
+    	font-family: 'Roboto';
+    	font-weight: 100;
+    	font-size: .9rem;
+    }
+    .tooltiptag{
+    	background-color: var(--inti-red) !important;
+    	color: var(--inti-white) !important;
+    	padding: 3px;
+    	font-family: 'Roboto';
+    	font-size: .65rem;
+    	text-transform: uppercase;
+    	margin-bottom: 3px;
+    }
+    
+@media only screen and (max-width: 768px) {
+   .rect-tooltip .tooltiptext {
+    visibility: unset;
+    height: 16vh;
+    width: 40%;
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+  .rect-tooltip:hover .tooltiptext {
+     visibility: visible;
+     opacity: 1;
+     text-transform: unset;
+     font-size: 1em;
+  }
+    .icon-tooltip:hover .icon-tooltiptext {
+    display:none;
+  }
+}
+
+@media (min-width: 992px){
+	.rect-tooltip .tooltiptext {
+/* 		text-align: center; */
+		height: unset !important;
+		width: unset !important;
+		background-color: unset;
+		opacity: 0;
+        position: unset;
+	}
+	/* Show the tooltip text when you mouse over the tooltip container */
+    .rect-tooltip:hover .tooltiptext {
+        opacity: 1;
+    }
+    .tooltipinfo{
+    	opacity: 0.65 !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

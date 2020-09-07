@@ -1,0 +1,564 @@
+﻿<!DOCTYPE html>
+
+<!-- MODAL -->
+<script>
+///////START CREATE THE MODAL - WAIT FOR WINDOW TO LOAD////////
+var samplesSize = 6;
+var modalNumber = 1;
+window.onload = function() {
+    //<div id="myModal" class="lightboxmodal">
+    var myModal = document.createElement("div");
+    myModal.id = "myModal";
+    myModal.className = "lightboxmodal";
+
+	var modalBg = document.createElement("div");
+	modalBg.id = "modalBg";
+	modalBg.className = "modal-bg";
+	modalBg.onclick = function() { closeModal(); }
+	myModal.appendChild(modalBg);
+  
+    //<span class="close cursor" onclick="closeModal()">&times;</span>
+//     var closemodal = document.createElement("span");
+//     closemodal.onclick = function() { closeModal(); }
+//     closemodal.innerHTML = "&times;";
+//     closemodal.className = "close cursor";
+//     myModal.appendChild(closemodal);
+  
+    //<div class="modalcontent">
+    var modalContent = document.createElement("div");
+    modalContent.className = "modalcontent";
+    myModal.appendChild(modalContent);
+  
+    //<div class="mySlides">
+    //  <div class="numbertext">1 / 4</div>
+    //  <img src="img/modal3/1.jpg" class="modal-img" id="slide1">
+    //</div>
+    var i = 1;
+    for (let index = 1; index <= samplesSize; index++) {
+        var mySlides = document.createElement("div");
+        mySlides.className = "mySlides";
+        modalContent.appendChild(mySlides);
+  
+        var numberText = document.createElement("div");
+        numberText.className = "numbertext";
+        numberText.innerHTML = index + " / " + samplesSize;
+        mySlides.appendChild(numberText);
+  
+        var img = document.createElement("img");
+        img.src = "img/modal" + modalNumber + "/" + index + ".jpg";
+        img.className ="modal-img";
+        img.id = "slide"+index;
+        mySlides.appendChild(img);
+    }
+  
+    //<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    //<a class="next" onclick="plusSlides(1)">&#10095;</a>
+    var prev = document.createElement("a");
+    prev.className = "prev";
+    prev.onclick = function() { plusSlides(-1); }
+    prev.innerHTML = "&#10094;";
+  
+    var next = document.createElement("a");
+    next.className = "next";
+    next.onclick = function() { plusSlides(1); }
+    next.innerHTML = "&#10095;";
+  
+    modalContent.appendChild(prev);
+    modalContent.appendChild(next);
+  
+    //<div class="caption-container">
+    //  <p id="caption"></p>
+    //</div>
+    var captioncontainer = document.createElement("div");
+    captioncontainer.className = "caption-container";
+    modalContent.appendChild(captioncontainer);
+  
+    var caption = document.createElement("p");
+    caption.id = "caption";
+    captioncontainer.appendChild(caption);
+  
+    //<div class="modalcolumn">
+    //    <img class="thumbs" src="img/modal3/1.jpg" onclick="currentSlide(1)" alt="1">
+    //</div>
+    for (let index = 1; index <= samplesSize; index++) {
+        var modalColumn = document.createElement("div");
+        modalColumn.className = "modalcolumn";
+        modalContent.appendChild(modalColumn);
+  
+        var thumbs = document.createElement("img");
+        thumbs.className = "thumbs";
+        thumbs.src = "img/modal" + modalNumber + "/" + index + ".jpg";
+        thumbs.onclick = function() { currentSlide(index); }
+        thumbs.alt = index;
+        thumbs.id = "thumbs"+index;
+        modalColumn.appendChild(thumbs);
+    }
+  
+    document.getElementById("page-top").appendChild(myModal);
+  }
+  ///////END CREATE THE MODAL////////
+  
+  // Open the Modal
+  var currModal;
+  function openModal(number, imgAmount) {
+      modalNumber = number; //Sets the current modal folder to display
+      var i = 1;
+      var loaderIcon = document.getElementById("loadericon");
+      loaderIcon.style.display = "inline-block";
+      for (let index = 1; index <= imgAmount; index++) { //Updates all the modal images to get them from the new folder
+        var img = document.getElementById("slide"+index);
+        img.src = "img/modal" + modalNumber + "/" + index + ".jpg";
+        var thumbs = document.getElementById("thumbs"+index);
+        thumbs.src = "img/modal" + modalNumber + "/" + index + ".jpg";
+        if(index==imgAmount){
+          img.onload = function() { document.getElementById("myModal").style.display = "block"; loaderIcon.style.display = "none"; }
+        }
+      }
+      document.getElementById("page-top").classList.add("modal-open");
+      document.getElementById("sideNav").style.opacity = 0;
+  }
+  
+  // Close the Modal
+  function closeModal() {
+	document.getElementById("page-top").classList.remove("modal-open");
+	document.getElementById("sideNav").style.opacity = 1;
+    document.getElementById("myModal").style.display = "none";
+  }
+  
+  var slideIndex = 1;
+  // Next/previous controls
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  
+  // Thumbnail image controls
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("thumbs");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    slides[slideIndex - 1].src = "img/modal1/1.jpg";
+    dots[slideIndex-1].className += " active";
+    captionText.innerHTML = dots[slideIndex-1].alt;
+  }
+  </script>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Intiworks</title>
+  <link rel="icon" href="img/logo/icon.ico">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Titillium:400,400i,800,800i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora|Roboto:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,400i,400,800i" rel="stylesheet">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom styles -->
+  <link href="css/resume.css" rel="stylesheet">
+  <link href="css/inti.css" rel="stylesheet">
+  <link href="css/animations.css" rel="stylesheet">
+  <link href="css/modal.css" rel="stylesheet">
+  <link href="css/contact.css" rel="stylesheet">
+  <link href="css/tooltips.css" rel="stylesheet">
+  <link href="css/loader.css" rel="stylesheet">
+  <link href="css/mobile-specific.css" rel="stylesheet">
+  <link href="css/hover/hover.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="sideNav">
+    <!-- <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <span class="d-block d-lg-none">inti works</span>
+    </a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger hvr-bubble-top-click" id="navlink1" href="#home">Inti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger hvr-bubble-top-click" id="navlink2" href="#offers">What I do</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger hvr-bubble-top-click" id="navlink3" href="#proyectos">Works</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger hvr-bubble-top-click" id="navlink4" href="#gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger hvr-bubble-top-click" id="navlink5" href="#about">About me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger hvr-bubble-top-click" id="navlink6" href="#educacion">Education</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger hvr-bubble-top-click" id="navlink7" href="#contact">Contact</a>
+        </li> 
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="home-bg"></div>
+  <div class="container-fluid p-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center section-home" id="home">
+      <div class="w-100 w-100-home center-element-all">
+        <div class="iw-logo-container"><img src="img/logo/iw_white6.png" class="fade-in iw-logo" id="logo-img"></div>
+        <div class="home-text" id="home-text">
+          <h1 class="mb-0 animate-text-1 center-mobile text-fade">Intiworks
+            <span class="text-primary"></span>
+          </h1>
+          <div class="subheading mb-5 fade-in center-mobile">
+            Web developer · Designer · Programmer
+          </div>
+        </div>
+        <p class="lead fade-in center-mobile request-site"><a class="js-scroll-trigger" href="#contact"><i>Requests open!</i></a></p>
+      <br>
+        <div class="social-icons fade-in center-mobile">
+            <a href="https://www.linkedin.com/in/inti/">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div> 
+      </div>
+    </section>
+    
+    <span class="sexy-line"></span>
+    
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center section-offers" id="offers">
+      <div class="w-100 color-white">
+      <h2 class="mb-5 color-white" style="text-align: center;">What I do</h2>
+      <div class="column-33-container">
+      <div class="column-33"><div class="offer-img offers-tooltip"><img src="img/offers/1.png"><span class="offers-tooltiptext"><br>Create websites</span></div></div>
+      <div class="column-33"><div class="offer-img offers-tooltip"><img src="img/offers/2.png"><span class="offers-tooltiptext"><br>Fullstack dev</span></div></div>
+      <div class="column-33"><div class="offer-img offers-tooltip"><img src="img/offers/3.png"><span class="offers-tooltiptext"><br>Graphic design</span></div></div>
+      </div>
+      <br><br><br>
+      <div class="offer-line"></div>
+      <div class="offer-logo"><img src="img/logo/iw_fullred.png"></div>
+      <div class="" style="text-align: center;">It's time to update your image to 2020.
+      <br>
+      Let's create something breathtaking for you.</div>
+      </div>
+    </section>
+    <hr class="m-0">    
+
+    <section class="resume-section p-3 p-lg-5 d-flex section-works section-proyectos" id="proyectos"> <!--justify-content-center-->
+        <div class="w-100">
+          <h2 class="mb-5 black-font center-text">Latest Works</h2>
+			    <div class="project-rect-container">
+	          <div class="rect-tooltip">
+	            <img src="img/stb.jpg" onclick="window.location.href = 'https://snepif.itch.io/shootthebeat';" class="project-rect">
+	            <span class="tooltiptext black-font">shoot the beat!<br>
+					      <b class="tooltiptag">Game design</b> <b class="tooltiptag">3D design</b><br>
+	              <span class="tooltipinfo">With more than 10.000 downloads, stb! takes osu! maps and translates them to a real 3D shooter game made from scratch. This project involved tons of hours of coding and 3D design.</span>
+	            </span>
+	          </div>
+	          <div class="rect-tooltip">
+	            <img src="img/keitherine.jpg" onclick="window.open('https://keitherine.art/')"  class="project-rect">
+	            <span class="tooltiptext black-font">Keitherine site<br>
+					      <b class="tooltiptag">Web design</b> <b class="tooltiptag">Graphic design</b><br>
+	             <span class="tooltipinfo">Personal website for one of the most skilled and popular Uruguayan anime/manga artists of our time. Users can request commissions, look at her works, buy merch, follow all the socials, and much more!</span>
+	            </span>
+	          </div>
+	          <div class="rect-tooltip">
+	            <img src="img/te3s.jpg"  onclick="window.location.href = 'https://play.google.com/store/apps/details?id=com.Inti.te3s&hl=en';" class="project-rect">
+	            <span class="tooltiptext black-font">te3s for Android<br>
+	              <b class="tooltiptag">Game design</b> <b class="tooltiptag">3D design</b><br>
+	              <span class="tooltipinfo">Reimagining the classic Tetris playstyle in a 3D environment, with 3-side based blocks. Engaging and original.</span>
+	            </span>
+            </div>
+          </div>
+          <div class="project-rect-container">
+	          <div class="rect-tooltip">
+	            <img src="img/cass.jpg" onclick="openModal('1', '6');currentSlide(1)" class="project-rect">
+	            <span class="tooltiptext black-font">Cassandre exhibition<br>
+	              <b class="tooltiptag">Graphic design</b> <b class="tooltiptag">Merchandise</b><br>
+	              <span class="tooltipinfo">An original exhibition involving fliers, pamphlets, posters, merchandising and mockups. A.M. Cassandre was my favorite graphic designer and I'm inspired a lot by his works.</span>
+	            </span>
+	          </div>
+	          <div class="rect-tooltip">
+	            <img src="img/reol.jpg" onclick="openModal('2', '6');currentSlide(1)" class="project-rect">
+	            <span class="tooltiptext black-font">Reol concept album<br>
+	              <b class="tooltiptag">Graphic design</b> <b class="tooltiptag">Branding</b><br>
+	              <span class="tooltipinfo">People often mistake it for a real, official album - meaning my objective was met. Inspired by one of the most popular Japanese Pop artists, the project involved looking their discography and using it as inspiration for a hypothetical album.</span>
+	            </span>
+            </div>
+            <div class="rect-tooltip">
+	            <img src="img/serra.jpg" onclick="window.open('https://joseluisserra.com/')" class="project-rect">
+	            <span class="tooltiptext black-font">JLS Website<br>
+	              <b class="tooltiptag">Web design</b> <b class="tooltiptag">Branding</b><br>
+	              <span class="tooltipinfo">Professional website for businessman, coach and entrepreneur JL Serra, where clients can get informed and request services.</span>
+	            </span>
+            </div>
+			    </div>
+        </div>
+
+    </section>
+
+<!--     <hr class="m-0"> -->
+<div class="color-white center-text" style="padding-top: 30px;">
+  Coming soon.
+</div>
+    <section class="resume-section p-3 p-lg-5 d-flex section-works section-gallery" id="gallery">
+        <div class="w-100">
+
+        </div>
+    </section>
+
+    <hr class="m-0">
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center section-about" id="about">
+        <div class="w-100 color-white">
+            <h2 class="center-text">Who I am</h2>
+            <div class="center-text">My goal is straight forward.</div><br><br><br>
+            <h3 class="color quote-text">
+		    <i class="color-red">Get the message across<br> <span class="color-white">Keep it beautiful and clean</span></i>
+		    </h3>
+            <div class="quote-img"></div><br>
+            <div class="profile-pic-container"><img src="img/avatar.png" class="profile-pic" title="Inti">
+            <h4>Inti</h4>
+            <span class="color-white">Web developer, Programer, Graphic Design student, Software and Videogame Developer. Astronomy, photography and physics aficionado. Love creating things and designing since I was young. Working as a programmer and designer.</span>
+            </div> 
+            <br><br>
+            <div class="subheading mb-3">Skills</div>
+            <ul class="list-inline dev-icons color-white">
+                <li class="list-inline-item">
+                    <i class="fab fa-html5"></i>
+                </li>
+                <li class="list-inline-item">
+                    <i class="fab fa-css3-alt"></i>
+                </li>
+                <li class="list-inline-item">
+                    <i class="fab fa-js-square"></i>
+                </li>
+                <li class="list-inline-item">
+                    <i class="fab fa-python"></i>
+                </li>
+                <li class="list-inline-item">
+                    <i class="fab fa-java"></i>
+                </li>
+                <li class="list-inline-item">
+                    <i class="fab fa-adobe"></i>
+                </li>
+                <li class="list-inline-item">
+                    <i class="fab fa-microsoft"></i>
+                </li>
+                <li class="list-inline-item">
+                    <i class="fab fa-linux"></i>
+                </li>
+                <li class="list-inline-item">
+                    <i class="fab fa-dev"></i>
+                </li>
+            </ul>
+            <div class="column-container">
+            <div class="column-66">
+	            <div class="subheading mb-3">Details</div>
+	            <ul class="fa-ul mb-0 color-white">
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Years of experience in several programming languages (C#, Java, Python, JS, etc.)
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Vast knowledge in everything graphic design related
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Expert front end and web design
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Back end and databases
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Visual Studio, Eclipse, Repositories in general
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Unity, videogame design/programming, shaders, particle effects
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Professional photography and editing, image/video: Vegas, Premiere, PS
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Automation, Selenium
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Spanish / English translation
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    PC Building and hardware repair
+	                </li>
+	            </ul>
+            </div>
+            &nbsp;
+            <div class="column-33">
+            	<div class="subheading mb-3">I create</div>
+	            <ul class="fa-ul mb-0 color-white">
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Websites
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Apps
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Design graphics & merchandise
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Videogames & more
+	                </li>
+	                <br>
+	            </ul>
+	            <div class="subheading mb-3">Languages</div>
+	            <ul class="fa-ul mb-0 color-white">
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Spanish (Native)
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    English (Native)
+	                </li>
+	                <li>
+	                    <i class="fa-li fa fa-check"></i>
+	                    Japanese/Portuguese (Basic)
+	                </li>
+	            </ul>
+            </div><!--end column 33-->
+            </div><!-- end column container -->
+        </div> <!--end w-100-->
+    </section>
+
+    <hr class="m-0">
+    
+        <section class="resume-section p-3 p-lg-5 d-flex align-items-center section-educacion" id="educacion">
+      <div class="w-100 color-white">
+        <h2 class="mb-5 center-text color-black">Education & Experience</h2>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
+          <div class="resume-content">
+            <h3 class="mb-0">UDE University - Uruguay</h3>
+            <div class="">Graphic design major, attending</div>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">Started 2019</span>
+          </div>
+        </div>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
+          <div class="resume-content">
+            <h3 class="mb-0">Academia A+ - Uruguay</h3>
+            <div class="">Gamedev | Programming, design, animation, marketing</div>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">Graduated 2017</span>
+          </div>
+        </div>
+        
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
+          <div class="resume-content">
+            <h3 class="mb-0">STATUM - Uruguay</h3>
+            <div class="">Job position: Java Developer | Back end, front end, graphic design</div>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">2018 - Present</span>
+          </div>
+        </div>
+        
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
+          <div class="resume-content">
+            <h3 class="mb-0">Freelance</h3>
+            <div class="">Countless websites & graphics</div>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary">2014 - Present</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- <hr class="m-0"> -->
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center section-contact" id="contact">
+      <!-- <div class="logo-contact"><img src="img/logo/iw_black.png" alt=""></div> -->
+      <div class="w-100">
+        <h2 class="mb-5 color-black center-text">Get in touch</h2>
+          <div class="color-black center-text">
+          	Fill the form for questions, business and proposals.
+          </div>
+
+          <div class="center-text contact-form">
+            <form name="contact" method="POST" data-netlify="true">      
+              <input name="name" type="text" class="feedback-input" placeholder="Name" />   
+              <input name="email" type="text" class="feedback-input" placeholder="Email" />
+              <textarea name="text" class="feedback-input" placeholder="Comment"></textarea>
+              <input type="submit" value="SUBMIT"/>
+            </form>
+          </div>
+        </div>
+
+    </section>
+      <!--ANIMATIONS AND ADDED STUFF-->
+      <div class="animate-line-1 line1"></div>
+      <div class="animate-line-1 line2"></div>
+      <div class="animate-line-1 line3"></div>
+  </div>
+
+
+  <div class="lds-ripple" id="loadericon"><div></div><div></div></div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/resume.min.js"></script>
+  
+    <!-- Custom scripts for this website -->
+  <script src="js/navbaropacity.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/rellax.min.js"></script>
+	<script>
+	  var rellax = new Rellax('.rellax');
+	</script>
+
+</body>
+
+</html>
