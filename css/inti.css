@@ -2,7 +2,7 @@
     --inti-blue:#0069A6;
     --inti-blue-light:#06c;
     --inti-white:rgb(255, 253, 239);
-	--inti-black:rgb(16, 16, 16);
+	--inti-black:rgb(12, 12, 12);
 	--inti-red:rgb(255, 54, 54); 
 }
 
@@ -66,7 +66,7 @@ h1{
 	z-index:-5;
 /* 	outline: 800px solid rgba(0, 44, 70, 0.15) !important; */
 	background-image: url("../img/photos/stock8.jpg");
-	filter: saturate(70%);
+	filter: saturate(55%);
 	top: 0;
 	left:0;
 	object-fit: cover;
@@ -75,10 +75,12 @@ h1{
 	width:100%;
 	min-height: 100vh;
 	background-position-y: 100%;
+	transition: 0.3s;
 }
-.fab:hover{
-	color: var(--inti-red) !important;
+.home-bg-blur{
+	filter: saturate(45%) blur(2px);
 }
+
 .center-element-all{
 	text-align: center !important;
 }

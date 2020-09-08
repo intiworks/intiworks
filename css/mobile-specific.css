@@ -382,8 +382,8 @@
 		}
 	.social-icons{
 		position: absolute;
-		top: 0;
-		right: 0;
+		top: 3rem;
+		right: 2rem;
 		padding: 8px 13px;
 	}
 	  .iw-logo-container{
@@ -395,20 +395,20 @@
 		z-index: 5;
 	  }
 	  .iw-logo-animation{
-		  transition: 0.3s !important;
+		  transition: 0.2s !important;
 		  /* filter:blur(4px); */
-		  transform: scale(0.7) translateY(-5vw);
+		  transform: scale(0.7) translateY(-7vw);
 		  opacity: 0.9 !important;
 	  }
 	  .home-text{
-		transition: 0.3s;
+		transition: 0.2s;
 		transition-timing-function: ease-out;
 		opacity: 0;
 		filter:blur(2px);
 	}
 	  .home-text-animation{
 		opacity: 1;
-		transform: translateY(29.5vh);
+		transform: translateY(17vh);
 		filter: unset;
 	}
 }

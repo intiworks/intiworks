@@ -98,7 +98,7 @@ p.lead {
 }
 
 .dev-icons .list-inline-item i:hover {
-  color: #BD5D38;
+  color: var(--inti-red);
 }
 
 #sideNav .navbar-nav .nav-item .nav-link {
@@ -110,7 +110,7 @@ p.lead {
 }
 
 #sideNav .navbar-toggler:focus {
-  outline-color: #d48a6e;
+  outline-color: var(--inti-red);
 }
 
 .nav-link.active{
@@ -232,11 +232,11 @@ section.resume-section .resume-item .resume-date {
 }
 
 a {
-  color: #BD5D38;
+  color: var(--inti-red);
 }
 
 a:hover, a:focus, a:active {
-  color: #824027;
+  color: var(--inti-red);
 }
     
     /*mobile*/

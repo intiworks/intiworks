@@ -32,6 +32,7 @@ function changeOpacity(scroll_pos) {
         navBar.style.filter = 'blur('+ '1' +'px)';
         document.getElementById("logo-img").classList.remove("iw-logo-animation");
         document.getElementById("home-text").classList.remove("home-text-animation");
+        document.getElementById("home-bg").classList.remove("home-bg-blur");
       }
       else if(percent*1.3 < 0.90) {
         navBar.style.opacity = percent*1.3;
@@ -39,7 +40,8 @@ function changeOpacity(scroll_pos) {
       }else{
     	document.getElementById("logo-img").classList.add("iw-logo-animation");
     	document.getElementById("logo-img").classList.remove("fade-in");
-    	document.getElementById("home-text").classList.add("home-text-animation");
+      document.getElementById("home-text").classList.add("home-text-animation");
+      document.getElementById("home-bg").classList.add("home-bg-blur");
         navBar.style.opacity = 1;
         navBar.style.filter = 'blur('+ '0' +'px)';
       }
