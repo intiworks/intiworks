@@ -46,7 +46,11 @@ window.onload = function() {
   
         var img = document.createElement("img");
         img.src = "img/modal" + modalNumber + "/" + index + ".jpg";
-        img.className ="modal-img";
+        if(modalNumber == 5){ //wide skillgap modal
+          img.className ="modal-img-wide";
+        }else{
+          img.className ="modal-img";
+        }        
         img.id = "slide"+index;
         mySlides.appendChild(img);
     }

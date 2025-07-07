@@ -160,6 +160,15 @@ img.hover-shadow {
     object-fit: cover;
     max-width: 80%;
 }
+.modal-img-wide{
+    height:65vh;
+    width: auto;
+    border-radius:10px;
+    display:block;
+    margin: 0 auto;
+    object-fit: contain;
+    max-width: 80%;
+}
 /*mobile*/
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
