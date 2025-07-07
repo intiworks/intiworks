@@ -46,12 +46,7 @@ window.onload = function() {
   
         var img = document.createElement("img");
         img.src = "img/modal" + modalNumber + "/" + index + ".jpg";
-        console.log("modalNumber = " + modalNumber);
-        if(modalNumber == 5){ //wide skillgap modal
-          img.className ="modal-img-wide";
-        }else{
-          img.className ="modal-img";
-        }        
+        img.className ="modal-img";      
         img.id = "slide"+index;
         mySlides.appendChild(img);
     }
@@ -113,6 +108,7 @@ window.onload = function() {
       for (let index = 1; index <= imgAmount; index++) { //Updates all the modal images to get them from the new folder
         var img = document.getElementById("slide"+index);
         img.src = "img/modal" + modalNumber + "/" + index + ".jpg";
+        img.className = "modal-img-wide";
         var thumbs = document.getElementById("thumbs"+index);
         thumbs.src = "img/modal" + modalNumber + "/" + index + ".jpg";
         if(index==imgAmount){
