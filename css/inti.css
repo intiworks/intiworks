@@ -207,7 +207,7 @@ h1{
 }
 .quote-img{
 /* 	background-image: url("https://picsum.photos/1920/1080?grayscale"); */
-	background-image: url("../img/modal3/4.jpg");
+	background-image: url("../img/modal6/2.jpg");
 	width:calc(100vw - 12px);
 	height:30vh;
 	object-fit:cover;
