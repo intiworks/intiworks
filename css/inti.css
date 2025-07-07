@@ -174,7 +174,7 @@ h1{
 
 .section-gallery{
   color: var(--inti-white);
-  background-image: url('../img/photos/stock5.jpg');
+  background-image: url('../img/modal4/1.jpg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -207,7 +207,7 @@ h1{
 }
 .quote-img{
 /* 	background-image: url("https://picsum.photos/1920/1080?grayscale"); */
-	background-image: url("../img/modal6/2.jpg");
+	background-image: url("../img/modal1/6.jpg");
 	width:calc(100vw - 12px);
 	height:30vh;
 	object-fit:cover;
