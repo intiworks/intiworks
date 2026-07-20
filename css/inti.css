@@ -210,22 +210,38 @@ h1{
 /* 	background-image: url("../img/modal1/6.jpg"); */
 /* 	background-image: url("../img/modal6/2.jpg"); */
 /* 	background-image: url("../img/modal3/3.jpg"); */
-	background-image:
-		repeating-linear-gradient(118deg, transparent 0px, transparent 38px, rgba(255, 54, 54, 0.35) 38px, rgba(255, 54, 54, 0.35) 40px, transparent 40px, transparent 96px),
-		repeating-linear-gradient(28deg, transparent 0px, transparent 70px, rgba(255, 54, 54, 0.12) 70px, rgba(255, 54, 54, 0.12) 71px);
 	background-color: var(--inti-black);
 	width:calc(100vw - 12px);
 	height:30vh;
 	object-fit:cover;
-	position: unset !important;
+	position: relative !important;
+	overflow: hidden;
 	box-shadow: inset 0 0 40pt 20pt rgb(0, 0, 0, 0.20) !important;
 /* 	background-position-y: 45%; */
 /* 	background-position-y: 50%; */
-
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: repeat;
-	background-size: auto;
+}
+.quote-img::before{
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: -40%;
+	width: 250%;
+	height: 220%;
+	background-image:
+		repeating-linear-gradient(to right, rgba(255, 54, 54, 0.55) 0px, rgba(255, 54, 54, 0.55) 2px, transparent 2px, transparent 64px),
+		repeating-linear-gradient(to top, rgba(255, 54, 54, 0.55) 0px, rgba(255, 54, 54, 0.55) 2px, transparent 2px, transparent 64px);
+	transform: translateX(-50%) perspective(300px) rotateX(65deg);
+	transform-origin: bottom center;
+}
+.quote-img::after{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 65%;
+	background: linear-gradient(to bottom, var(--inti-black) 0%, rgba(12, 12, 12, 0) 100%);
+	pointer-events: none;
 }
 .red-on-hover{
 	transition: 0.3s;
