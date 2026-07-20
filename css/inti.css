@@ -210,6 +210,7 @@ h1{
 /* 	background-image: url("../img/modal1/6.jpg"); */
 /* 	background-image: url("../img/modal6/2.jpg"); */
 	background-image: url("../img/modal3/3.jpg");
+	filter: blur(3px);
 	width:calc(100vw - 12px);
 	height:30vh;
 	object-fit:cover;
