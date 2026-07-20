@@ -5,6 +5,7 @@
 ///////START CREATE THE MODAL - WAIT FOR WINDOW TO LOAD////////
 var samplesSize = 6;
 var modalNumber = 1;
+var currentImgAmount = samplesSize;
 window.onload = function() {
     //<div id="myModal" class="lightboxmodal">
     var myModal = document.createElement("div");
@@ -102,17 +103,27 @@ window.onload = function() {
   var currModal;
   function openModal(number, imgAmount) {
       modalNumber = number; //Sets the current modal folder to display
-      var i = 1;
+      currentImgAmount = imgAmount;
+      slideIndex = 1;
       var loaderIcon = document.getElementById("loadericon");
       loaderIcon.style.display = "inline-block";
-      for (let index = 1; index <= imgAmount; index++) { //Updates all the modal images to get them from the new folder
+      for (let index = 1; index <= samplesSize; index++) { //Updates or hides every modal slot depending on how many images this modal actually has
         var img = document.getElementById("slide"+index);
-        img.src = "img/modal" + modalNumber + "/" + index + ".jpg";
-        if(modalNumber==5){img.className = "modal-img-wide";} //skillgap modal is wider because its 1920 images
         var thumbs = document.getElementById("thumbs"+index);
-        thumbs.src = "img/modal" + modalNumber + "/" + index + ".jpg";
-        if(index==imgAmount){
-          img.onload = function() { document.getElementById("myModal").style.display = "block"; loaderIcon.style.display = "none"; }
+        var numberText = img.parentElement.querySelector(".numbertext");
+        if (index <= imgAmount) {
+          img.src = "img/modal" + modalNumber + "/" + index + ".jpg";
+          if(modalNumber==5){img.className = "modal-img-wide";} //skillgap modal is wider because its 1920 images
+          thumbs.src = "img/modal" + modalNumber + "/" + index + ".jpg";
+          numberText.innerHTML = index + " / " + imgAmount;
+          img.parentElement.style.display = "";
+          thumbs.parentElement.style.display = "";
+          if(index==imgAmount){
+            img.onload = function() { document.getElementById("myModal").style.display = "block"; loaderIcon.style.display = "none"; }
+          }
+        } else {
+          img.parentElement.style.display = "none";
+          thumbs.parentElement.style.display = "none";
         }
       }
       document.getElementById("page-top").classList.add("modal-open");
@@ -142,16 +153,15 @@ window.onload = function() {
     var slides = document.getElementsByClassName("mySlides");
     var dots = document.getElementsByClassName("thumbs");
     var captionText = document.getElementById("caption");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
+    if (n > currentImgAmount) {slideIndex = 1}
+    if (n < 1) {slideIndex = currentImgAmount}
+    for (i = 0; i < currentImgAmount; i++) {
       slides[i].style.display = "none";
     }
-    for (i = 0; i < dots.length; i++) {
+    for (i = 0; i < currentImgAmount; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
     slides[slideIndex - 1].style.display = "block";
-    slides[slideIndex - 1].src = "img/modal1/1.jpg";
     dots[slideIndex-1].className += " active";
     captionText.innerHTML = dots[slideIndex-1].alt;
   }
