@@ -247,6 +247,26 @@ h1{
 	height: 7rem;
 	margin-bottom: 1rem;
 }
+.offer-icon-circle{
+	border-radius: 50%;
+	background-color: var(--inti-white);
+	color: var(--inti-black);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.3s;
+}
+.offer-icon-circle:hover{
+	transform: scale(1.2);
+}
+.offer-column{
+	width: 50%;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: -3px;
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
 .quote-text{
 	margin-top: -6vh;
 	position: absolute;
