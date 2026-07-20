@@ -254,16 +254,25 @@ h1{
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
 	transition: 0.3s;
+}
+.offer-icon-circle i{
+	line-height: 1;
+	text-align: center;
 }
 .offer-icon-circle:hover{
 	transform: scale(1.2);
 }
+.column-33-container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
 .offer-column{
-	width: 50%;
-	display: inline-block;
-	vertical-align: top;
-	margin-right: -3px;
+	flex: 0 0 50%;
+	max-width: 50%;
 	margin-bottom: 1.5rem;
 	text-align: center;
 }
