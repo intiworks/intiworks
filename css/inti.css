@@ -209,40 +209,20 @@ h1{
 /* 	background-image: url("https://picsum.photos/1920/1080?grayscale"); */
 /* 	background-image: url("../img/modal1/6.jpg"); */
 /* 	background-image: url("../img/modal6/2.jpg"); */
-/* 	background-image: url("../img/modal3/3.jpg"); */
-	background-color: var(--inti-black);
+	background-image: url("../img/modal3/3.jpg");
+	filter: blur(3px);
 	width:calc(100vw - 12px);
 	height:30vh;
 	object-fit:cover;
-	position: relative !important;
-	overflow: hidden;
+	position: unset !important;
 	box-shadow: inset 0 0 40pt 20pt rgb(0, 0, 0, 0.20) !important;
 /* 	background-position-y: 45%; */
 /* 	background-position-y: 50%; */
-}
-.quote-img::before{
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-image:
-		linear-gradient(rgba(255, 54, 54, 0.6) 2px, transparent 2px),
-		linear-gradient(90deg, rgba(255, 54, 54, 0.6) 2px, transparent 2px);
-	background-size: 50px 50px;
-	transform: perspective(400px) rotateX(60deg) scale(1.8);
-	transform-origin: center bottom;
-}
-.quote-img::after{
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 65%;
-	background: linear-gradient(to bottom, var(--inti-black) 0%, rgba(12, 12, 12, 0) 100%);
-	pointer-events: none;
+
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .red-on-hover{
 	transition: 0.3s;
