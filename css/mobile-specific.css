@@ -274,6 +274,7 @@
 		width: 33%;
 		margin-right: -3px;
 		display: inline-block;
+		vertical-align: top;
 	}
 	.column-33 img{
 		max-width: 100%;
