@@ -122,7 +122,7 @@
 	}
 
 	.profile-pic{
-		filter: grayscale(80%);
+		filter: grayscale(100%);
 		width: 150px;
 		height: auto;
 		border-radius: 50%;
@@ -248,7 +248,7 @@
 		padding-top: 1rem;
 	}
 	.profile-pic{
-		filter: grayscale(30%);
+		filter: grayscale(100%);
 		width: 150px;
 		height: auto;
 		border-radius: 50%;
@@ -258,7 +258,7 @@
 		float: right;
 	}
 	.profile-pic:hover{
-		filter: grayscale(10%);
+		filter: grayscale(100%);
 		border: solid 1px var(--inti-red);
 	}
 	.quote-img{
