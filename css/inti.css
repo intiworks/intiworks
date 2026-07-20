@@ -267,6 +267,10 @@ h1{
 	margin-bottom: 1.5rem;
 	text-align: center;
 }
+.offer-column img{
+	max-width: 100%;
+	height: auto;
+}
 .quote-text{
 	margin-top: -6vh;
 	position: absolute;
