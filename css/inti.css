@@ -223,15 +223,16 @@ h1{
 .quote-img::before{
 	content: "";
 	position: absolute;
-	left: 50%;
-	bottom: -40%;
-	width: 250%;
-	height: 220%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	background-image:
-		repeating-linear-gradient(to right, rgba(255, 54, 54, 0.55) 0px, rgba(255, 54, 54, 0.55) 2px, transparent 2px, transparent 64px),
-		repeating-linear-gradient(to top, rgba(255, 54, 54, 0.55) 0px, rgba(255, 54, 54, 0.55) 2px, transparent 2px, transparent 64px);
-	transform: translateX(-50%) perspective(300px) rotateX(65deg);
-	transform-origin: bottom center;
+		linear-gradient(rgba(255, 54, 54, 0.6) 2px, transparent 2px),
+		linear-gradient(90deg, rgba(255, 54, 54, 0.6) 2px, transparent 2px);
+	background-size: 50px 50px;
+	transform: perspective(400px) rotateX(60deg) scale(1.8);
+	transform-origin: center bottom;
 }
 .quote-img::after{
 	content: "";
