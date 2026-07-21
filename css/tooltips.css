@@ -136,6 +136,9 @@
     opacity: 1;
     transition: opacity 0.5s;
   }
+  .tooltipinfo {
+    display: none;
+  }
   .rect-tooltip:hover .tooltiptext {
      visibility: visible;
      opacity: 1;
